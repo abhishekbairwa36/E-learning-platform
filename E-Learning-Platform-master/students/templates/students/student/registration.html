@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block style %}
+    <style>
+        /* Custom CSS for color modifications */
+        .text-primary {
+            color: #FF0000; /* Change the text color of the text-primary class to red */
+        }
+
+        .bg-primary {
+            background-color: #055160; /* Change the background color of the bg-primary class to dark teal */
+            color: #FFFFFF; /* Change the text color of the bg-primary class to white */
+        }
+    </style>
+{% endblock %}
+
+{% block page_title %}
+    Sign Up
+{% endblock %}
+
+{% block content %}
+    <div class="module shadow-style w-100">
+        <h2 class="card p-4 text-center text-white bg-primary">Enter your details to create an account</h2>
+        <form class="form" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p><input class="bg-primary" type="submit" value="Create the account"></p>
+        </form>
+    </div>
+{% endblock %}

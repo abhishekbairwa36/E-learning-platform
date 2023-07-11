@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}MyCourses{% endblock %}
+
+{% block style %}
+    <style>
+        /* Custom CSS for color modifications */
+        .hover-style {
+            color: #FF0000; /* Change the text color of the hover-style class to red */
+        }
+
+        .display-6 {
+            color: #055160; /* Change the text color of the display-6 class to dark teal */
+        }
+
+        .btn-primary {
+            background-color: #055160; /* Change the background color of the primary button to dark teal */
+            color: #FFFFFF; /* Change the text color of the primary button to white */
+        }
+
+        .text-primary {
+            color: #0000FF; /* Change the text color of the text-primary class to blue */
+        }
+
+        .btn-success {
+            background-color: #008000; /* Change the background color of the success button to green */
+            color: #FFFFFF; /* Change the text color of the success button to white */
+        }
+    </style>
+{% endblock %}
+
+{% block page_title %}
+    My courses
+{% endblock %}
+
+{% block content%}
+    <div class="module shadow-style w-100">
+        {% for course in object_list %}
+            <div class="card p-1 text-center hover-style">
+                <h3 class="display-6">{{ course.title }}</h3>
+                <p>
+                    <a class="btn btn-primary text-white" href="{% url 'student_course_detail' course.id %}">Access Contents</a>
+                </p>
+            </div>
+        {% empty %}
+            <p class="text-primary display-6">Not Enrolled in any Courses yet</p>
+            <a class="btn btn-success text-white" href="{% url 'course_list' %}">Browse Course</a> To Enroll in a Course
+        {% endfor %}
+    </div>
+{% endblock %}
